@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e5bed5b-16e9-460a-b7be-a21af1a3114a" name="Default" comment="" />
+    <list default="true" id="7e5bed5b-16e9-460a-b7be-a21af1a3114a" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tutorial/pipelines.py" afterPath="$PROJECT_DIR$/tutorial/pipelines.py" />
+    </list>
     <ignored path="tutorial.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -24,7 +26,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="dy.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="dy.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tutorial/spiders/dy.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="561">
@@ -66,15 +68,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pipelines.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="pipelines.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tutorial/pipelines.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="24" column="97" selection-start-line="24" selection-start-column="97" selection-end-line="24" selection-end-column="97" />
+            <state relative-caret-position="165">
+              <caret line="11" column="53" selection-start-line="11" selection-start-column="53" selection-end-line="11" selection-end-column="53" />
               <folding>
                 <element signature="e#192#206#0" expanded="true" />
-                <marker date="1470988050000" expanded="true" signature="817:936" ph="INSERT INTO `core_film`... " />
-                <marker date="1470988050000" expanded="true" signature="1356:1381" ph="SELECT * FRO... core_film" />
+                <marker date="1470988553000" expanded="true" signature="818:937" ph="INSERT INTO `core_film`... " />
+                <marker date="1470988553000" expanded="true" signature="1357:1382" ph="SELECT * FRO... core_film" />
               </folding>
             </state>
           </provider>
@@ -143,6 +145,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -153,8 +157,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -496,8 +498,8 @@
           <caret line="24" column="97" selection-start-line="24" selection-start-column="97" selection-end-line="24" selection-end-column="97" />
           <folding>
             <element signature="e#192#206#0" expanded="true" />
-            <marker date="1470988050000" expanded="true" signature="817:936" ph="INSERT INTO `core_film`... " />
-            <marker date="1470988050000" expanded="true" signature="1356:1381" ph="SELECT * FRO... core_film" />
+            <marker date="1470988553000" expanded="true" signature="818:937" ph="INSERT INTO `core_film`... " />
+            <marker date="1470988553000" expanded="true" signature="1357:1382" ph="SELECT * FRO... core_film" />
           </folding>
         </state>
       </provider>
@@ -550,8 +552,8 @@
           <caret line="24" column="141" selection-start-line="24" selection-start-column="141" selection-end-line="24" selection-end-column="141" />
           <folding>
             <element signature="e#192#206#0" expanded="true" />
-            <marker date="1470988050000" expanded="true" signature="817:936" ph="INSERT INTO `core_film`... " />
-            <marker date="1470988050000" expanded="true" signature="1356:1381" ph="SELECT * FRO... core_film" />
+            <marker date="1470988553000" expanded="true" signature="818:937" ph="INSERT INTO `core_film`... " />
+            <marker date="1470988553000" expanded="true" signature="1357:1382" ph="SELECT * FRO... core_film" />
           </folding>
         </state>
       </provider>
@@ -604,8 +606,8 @@
           <caret line="24" column="141" selection-start-line="24" selection-start-column="141" selection-end-line="24" selection-end-column="141" />
           <folding>
             <element signature="e#192#206#0" expanded="true" />
-            <marker date="1470988050000" expanded="true" signature="817:936" ph="INSERT INTO `core_film`... " />
-            <marker date="1470988050000" expanded="true" signature="1356:1381" ph="SELECT * FRO... core_film" />
+            <marker date="1470988553000" expanded="true" signature="818:937" ph="INSERT INTO `core_film`... " />
+            <marker date="1470988553000" expanded="true" signature="1357:1382" ph="SELECT * FRO... core_film" />
           </folding>
         </state>
       </provider>
@@ -658,8 +660,8 @@
           <caret line="24" column="141" selection-start-line="24" selection-start-column="141" selection-end-line="24" selection-end-column="141" />
           <folding>
             <element signature="e#192#206#0" expanded="true" />
-            <marker date="1470988050000" expanded="true" signature="817:936" ph="INSERT INTO `core_film`... " />
-            <marker date="1470988050000" expanded="true" signature="1356:1381" ph="SELECT * FRO... core_film" />
+            <marker date="1470988553000" expanded="true" signature="818:937" ph="INSERT INTO `core_film`... " />
+            <marker date="1470988553000" expanded="true" signature="1357:1382" ph="SELECT * FRO... core_film" />
           </folding>
         </state>
       </provider>
@@ -719,8 +721,8 @@
           <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
           <folding>
             <element signature="e#192#206#0" expanded="true" />
-            <marker date="1470988050000" expanded="true" signature="817:936" ph="INSERT INTO `core_film`... " />
-            <marker date="1470988050000" expanded="true" signature="1356:1381" ph="SELECT * FRO... core_film" />
+            <marker date="1470988553000" expanded="true" signature="818:937" ph="INSERT INTO `core_film`... " />
+            <marker date="1470988553000" expanded="true" signature="1357:1382" ph="SELECT * FRO... core_film" />
           </folding>
         </state>
       </provider>
@@ -876,24 +878,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial/pipelines.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="24" column="97" selection-start-line="24" selection-start-column="97" selection-end-line="24" selection-end-column="97" />
-          <folding>
-            <element signature="e#192#206#0" expanded="true" />
-            <marker date="1470988050000" expanded="true" signature="817:936" ph="INSERT INTO `core_film`... " />
-            <marker date="1470988050000" expanded="true" signature="1356:1381" ph="SELECT * FRO... core_film" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tutorial/spiders/dy.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
           <caret line="42" column="80" selection-start-line="42" selection-start-column="80" selection-end-line="42" selection-end-column="80" />
           <folding>
             <element signature="e#24#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tutorial/pipelines.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="53" selection-start-line="11" selection-start-column="53" selection-end-line="11" selection-end-column="53" />
+          <folding>
+            <element signature="e#192#206#0" expanded="true" />
+            <marker date="1470988553000" expanded="true" signature="818:937" ph="INSERT INTO `core_film`... " />
+            <marker date="1470988553000" expanded="true" signature="1357:1382" ph="SELECT * FRO... core_film" />
           </folding>
         </state>
       </provider>
