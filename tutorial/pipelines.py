@@ -9,7 +9,7 @@ from datetime import datetime
 class TutorialPipeline(object):
     connection = pymysql.connect(host='101.200.156.230',
                                  user='root',
-                                 password='DSxrjk230s',
+                                 password='DSxrjk230',
                                  charset='utf8',
                                  db='pymovie',
                                  cursorclass=pymysql.cursors.DictCursor)
