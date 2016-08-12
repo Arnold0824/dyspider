@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 import scrapy
 from scrapy.selector import Selector
-from Tutorial.items import *
+from tutorial.items import *
 
 
 class A33mdSpider(scrapy.Spider):
-    name = "33md"
+    name = "33md1"
     allowed_domains = ["kanxi123.com"]
     start_urls = ["http://www.kanxi123.com/sort/movie/"]
 
