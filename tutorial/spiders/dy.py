@@ -13,7 +13,7 @@ class DySpider(scrapy.Spider):
     )
 
     def parse(self, response):
-        lasttime = '2016-08-05 00:00:00'
+        lasttime = '1990-08-05 00:00:00'
         lasttime=datetime.strptime(lasttime, '%Y-%m-%d %H:%M:%S')
         #import re
         pa = re.compile(r'(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})')

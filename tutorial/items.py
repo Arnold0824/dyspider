@@ -14,8 +14,10 @@ class TutorialItem(scrapy.Item):
     tags=scrapy.Field()#关键字,标签 可为空
     link=scrapy.Field()#爬虫进入影片详情页面的链接
     intro=scrapy.Field()#包含演员职员表
+    year=scrapy.Field()
     actors=scrapy.Field()
     director=scrapy.Field()
     downloadlink=scrapy.Field()#下载链接
     datetime=scrapy.Field()#电影网站上架时间
     coverlink=scrapy.Field()#封面链接
+    country=scrapy.Field()
