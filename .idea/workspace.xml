@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e5bed5b-16e9-460a-b7be-a21af1a3114a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tutorial/items.py" afterPath="$PROJECT_DIR$/tutorial/items.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tutorial/pipelines.py" afterPath="$PROJECT_DIR$/tutorial/pipelines.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tutorial/settings.py" afterPath="$PROJECT_DIR$/tutorial/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tutorial/spiders/33md.py" afterPath="$PROJECT_DIR$/tutorial/spiders/33md.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tutorial/spiders/kanxi.py" afterPath="$PROJECT_DIR$/tutorial/spiders/kanxi.py" />
     </list>
     <ignored path="tutorial.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,7 +26,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="33md.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="33md.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tutorial/spiders/33md.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="271">
@@ -73,22 +68,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pipelines.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="pipelines.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tutorial/pipelines.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1050">
-              <caret line="71" column="144" selection-start-line="71" selection-start-column="144" selection-end-line="71" selection-end-column="144" />
+            <state relative-caret-position="166">
+              <caret line="42" column="2" selection-start-line="42" selection-start-column="2" selection-end-line="42" selection-end-column="2" />
               <folding>
                 <element signature="e#192#206#0" expanded="true" />
-                <marker date="1472617252000" expanded="true" signature="1058:1251" ph="INSERT INTO `core_film`... " />
-                <marker date="1472617252000" expanded="true" signature="1611:1639" ph="insert into ``... " />
-                <marker date="1472617252000" expanded="true" signature="1611:1731" ph="insert into `core_film_tags`... " />
-                <marker date="1472617252000" expanded="true" signature="1611:1773" ph="insert into ``... " />
-                <marker date="1472617252000" expanded="true" signature="2043:2068" ph="SELECT * FRO... core_film" />
-                <marker date="1472617252000" expanded="true" signature="3106:3162" ph="select count... core_film" />
-                <marker date="1472617252000" expanded="true" signature="3286:3479" ph="INSERT INTO `core_film`... " />
-                <marker date="1472617252000" expanded="true" signature="3888:4008" ph="insert into `core_film_tags`... " />
-                <marker date="1472617252000" expanded="true" signature="4166:4226" ph="update `core... " />
+                <marker date="1472716726000" expanded="true" signature="1058:1251" ph="INSERT INTO `core_film`... " />
+                <marker date="1472716726000" expanded="true" signature="1611:1639" ph="insert into ``... " />
+                <marker date="1472716726000" expanded="true" signature="1611:1731" ph="insert into `core_film_tags`... " />
+                <marker date="1472716726000" expanded="true" signature="1611:1773" ph="insert into ``... " />
+                <marker date="1472716726000" expanded="true" signature="2043:2068" ph="SELECT * FRO... core_film" />
+                <marker date="1472716726000" expanded="true" signature="3108:3164" ph="select count... core_film" />
+                <marker date="1472716726000" expanded="true" signature="3288:3481" ph="INSERT INTO `core_film`... " />
+                <marker date="1472716726000" expanded="true" signature="3890:4010" ph="insert into `core_film_tags`... " />
+                <marker date="1472716726000" expanded="true" signature="4168:4228" ph="update `core... " />
               </folding>
             </state>
           </provider>
@@ -119,8 +114,8 @@
         <option value="$PROJECT_DIR$/tutorial/items.py" />
         <option value="$PROJECT_DIR$/tutorial/spiders/kanxi.py" />
         <option value="$PROJECT_DIR$/tutorial/settings.py" />
-        <option value="$PROJECT_DIR$/tutorial/pipelines.py" />
         <option value="$PROJECT_DIR$/tutorial/spiders/33md.py" />
+        <option value="$PROJECT_DIR$/tutorial/pipelines.py" />
       </list>
     </option>
   </component>
@@ -549,15 +544,15 @@
           <caret line="24" column="97" selection-start-line="24" selection-start-column="97" selection-end-line="24" selection-end-column="97" />
           <folding>
             <element signature="e#192#206#0" expanded="true" />
-            <marker date="1472617252000" expanded="true" signature="1058:1251" ph="INSERT INTO `core_film`... " />
-            <marker date="1472617252000" expanded="true" signature="1611:1639" ph="insert into ``... " />
-            <marker date="1472617252000" expanded="true" signature="1611:1731" ph="insert into `core_film_tags`... " />
-            <marker date="1472617252000" expanded="true" signature="1611:1773" ph="insert into ``... " />
-            <marker date="1472617252000" expanded="true" signature="2043:2068" ph="SELECT * FRO... core_film" />
-            <marker date="1472617252000" expanded="true" signature="3106:3162" ph="select count... core_film" />
-            <marker date="1472617252000" expanded="true" signature="3286:3479" ph="INSERT INTO `core_film`... " />
-            <marker date="1472617252000" expanded="true" signature="3888:4008" ph="insert into `core_film_tags`... " />
-            <marker date="1472617252000" expanded="true" signature="4166:4226" ph="update `core... " />
+            <marker date="1472716726000" expanded="true" signature="1058:1251" ph="INSERT INTO `core_film`... " />
+            <marker date="1472716726000" expanded="true" signature="1611:1639" ph="insert into ``... " />
+            <marker date="1472716726000" expanded="true" signature="1611:1731" ph="insert into `core_film_tags`... " />
+            <marker date="1472716726000" expanded="true" signature="1611:1773" ph="insert into ``... " />
+            <marker date="1472716726000" expanded="true" signature="2043:2068" ph="SELECT * FRO... core_film" />
+            <marker date="1472716726000" expanded="true" signature="3108:3164" ph="select count... core_film" />
+            <marker date="1472716726000" expanded="true" signature="3288:3481" ph="INSERT INTO `core_film`... " />
+            <marker date="1472716726000" expanded="true" signature="3890:4010" ph="insert into `core_film_tags`... " />
+            <marker date="1472716726000" expanded="true" signature="4168:4228" ph="update `core... " />
           </folding>
         </state>
       </provider>
@@ -607,15 +602,15 @@
           <caret line="24" column="141" selection-start-line="24" selection-start-column="141" selection-end-line="24" selection-end-column="141" />
           <folding>
             <element signature="e#192#206#0" expanded="true" />
-            <marker date="1472617252000" expanded="true" signature="1058:1251" ph="INSERT INTO `core_film`... " />
-            <marker date="1472617252000" expanded="true" signature="1611:1639" ph="insert into ``... " />
-            <marker date="1472617252000" expanded="true" signature="1611:1731" ph="insert into `core_film_tags`... " />
-            <marker date="1472617252000" expanded="true" signature="1611:1773" ph="insert into ``... " />
-            <marker date="1472617252000" expanded="true" signature="2043:2068" ph="SELECT * FRO... core_film" />
-            <marker date="1472617252000" expanded="true" signature="3106:3162" ph="select count... core_film" />
-            <marker date="1472617252000" expanded="true" signature="3286:3479" ph="INSERT INTO `core_film`... " />
-            <marker date="1472617252000" expanded="true" signature="3888:4008" ph="insert into `core_film_tags`... " />
-            <marker date="1472617252000" expanded="true" signature="4166:4226" ph="update `core... " />
+            <marker date="1472716726000" expanded="true" signature="1058:1251" ph="INSERT INTO `core_film`... " />
+            <marker date="1472716726000" expanded="true" signature="1611:1639" ph="insert into ``... " />
+            <marker date="1472716726000" expanded="true" signature="1611:1731" ph="insert into `core_film_tags`... " />
+            <marker date="1472716726000" expanded="true" signature="1611:1773" ph="insert into ``... " />
+            <marker date="1472716726000" expanded="true" signature="2043:2068" ph="SELECT * FRO... core_film" />
+            <marker date="1472716726000" expanded="true" signature="3108:3164" ph="select count... core_film" />
+            <marker date="1472716726000" expanded="true" signature="3288:3481" ph="INSERT INTO `core_film`... " />
+            <marker date="1472716726000" expanded="true" signature="3890:4010" ph="insert into `core_film_tags`... " />
+            <marker date="1472716726000" expanded="true" signature="4168:4228" ph="update `core... " />
           </folding>
         </state>
       </provider>
@@ -665,15 +660,15 @@
           <caret line="24" column="141" selection-start-line="24" selection-start-column="141" selection-end-line="24" selection-end-column="141" />
           <folding>
             <element signature="e#192#206#0" expanded="true" />
-            <marker date="1472617252000" expanded="true" signature="1058:1251" ph="INSERT INTO `core_film`... " />
-            <marker date="1472617252000" expanded="true" signature="1611:1639" ph="insert into ``... " />
-            <marker date="1472617252000" expanded="true" signature="1611:1731" ph="insert into `core_film_tags`... " />
-            <marker date="1472617252000" expanded="true" signature="1611:1773" ph="insert into ``... " />
-            <marker date="1472617252000" expanded="true" signature="2043:2068" ph="SELECT * FRO... core_film" />
-            <marker date="1472617252000" expanded="true" signature="3106:3162" ph="select count... core_film" />
-            <marker date="1472617252000" expanded="true" signature="3286:3479" ph="INSERT INTO `core_film`... " />
-            <marker date="1472617252000" expanded="true" signature="3888:4008" ph="insert into `core_film_tags`... " />
-            <marker date="1472617252000" expanded="true" signature="4166:4226" ph="update `core... " />
+            <marker date="1472716726000" expanded="true" signature="1058:1251" ph="INSERT INTO `core_film`... " />
+            <marker date="1472716726000" expanded="true" signature="1611:1639" ph="insert into ``... " />
+            <marker date="1472716726000" expanded="true" signature="1611:1731" ph="insert into `core_film_tags`... " />
+            <marker date="1472716726000" expanded="true" signature="1611:1773" ph="insert into ``... " />
+            <marker date="1472716726000" expanded="true" signature="2043:2068" ph="SELECT * FRO... core_film" />
+            <marker date="1472716726000" expanded="true" signature="3108:3164" ph="select count... core_film" />
+            <marker date="1472716726000" expanded="true" signature="3288:3481" ph="INSERT INTO `core_film`... " />
+            <marker date="1472716726000" expanded="true" signature="3890:4010" ph="insert into `core_film_tags`... " />
+            <marker date="1472716726000" expanded="true" signature="4168:4228" ph="update `core... " />
           </folding>
         </state>
       </provider>
@@ -723,15 +718,15 @@
           <caret line="24" column="141" selection-start-line="24" selection-start-column="141" selection-end-line="24" selection-end-column="141" />
           <folding>
             <element signature="e#192#206#0" expanded="true" />
-            <marker date="1472617252000" expanded="true" signature="1058:1251" ph="INSERT INTO `core_film`... " />
-            <marker date="1472617252000" expanded="true" signature="1611:1639" ph="insert into ``... " />
-            <marker date="1472617252000" expanded="true" signature="1611:1731" ph="insert into `core_film_tags`... " />
-            <marker date="1472617252000" expanded="true" signature="1611:1773" ph="insert into ``... " />
-            <marker date="1472617252000" expanded="true" signature="2043:2068" ph="SELECT * FRO... core_film" />
-            <marker date="1472617252000" expanded="true" signature="3106:3162" ph="select count... core_film" />
-            <marker date="1472617252000" expanded="true" signature="3286:3479" ph="INSERT INTO `core_film`... " />
-            <marker date="1472617252000" expanded="true" signature="3888:4008" ph="insert into `core_film_tags`... " />
-            <marker date="1472617252000" expanded="true" signature="4166:4226" ph="update `core... " />
+            <marker date="1472716726000" expanded="true" signature="1058:1251" ph="INSERT INTO `core_film`... " />
+            <marker date="1472716726000" expanded="true" signature="1611:1639" ph="insert into ``... " />
+            <marker date="1472716726000" expanded="true" signature="1611:1731" ph="insert into `core_film_tags`... " />
+            <marker date="1472716726000" expanded="true" signature="1611:1773" ph="insert into ``... " />
+            <marker date="1472716726000" expanded="true" signature="2043:2068" ph="SELECT * FRO... core_film" />
+            <marker date="1472716726000" expanded="true" signature="3108:3164" ph="select count... core_film" />
+            <marker date="1472716726000" expanded="true" signature="3288:3481" ph="INSERT INTO `core_film`... " />
+            <marker date="1472716726000" expanded="true" signature="3890:4010" ph="insert into `core_film_tags`... " />
+            <marker date="1472716726000" expanded="true" signature="4168:4228" ph="update `core... " />
           </folding>
         </state>
       </provider>
@@ -788,15 +783,15 @@
           <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
           <folding>
             <element signature="e#192#206#0" expanded="true" />
-            <marker date="1472617252000" expanded="true" signature="1058:1251" ph="INSERT INTO `core_film`... " />
-            <marker date="1472617252000" expanded="true" signature="1611:1639" ph="insert into ``... " />
-            <marker date="1472617252000" expanded="true" signature="1611:1731" ph="insert into `core_film_tags`... " />
-            <marker date="1472617252000" expanded="true" signature="1611:1773" ph="insert into ``... " />
-            <marker date="1472617252000" expanded="true" signature="2043:2068" ph="SELECT * FRO... core_film" />
-            <marker date="1472617252000" expanded="true" signature="3106:3162" ph="select count... core_film" />
-            <marker date="1472617252000" expanded="true" signature="3286:3479" ph="INSERT INTO `core_film`... " />
-            <marker date="1472617252000" expanded="true" signature="3888:4008" ph="insert into `core_film_tags`... " />
-            <marker date="1472617252000" expanded="true" signature="4166:4226" ph="update `core... " />
+            <marker date="1472716726000" expanded="true" signature="1058:1251" ph="INSERT INTO `core_film`... " />
+            <marker date="1472716726000" expanded="true" signature="1611:1639" ph="insert into ``... " />
+            <marker date="1472716726000" expanded="true" signature="1611:1731" ph="insert into `core_film_tags`... " />
+            <marker date="1472716726000" expanded="true" signature="1611:1773" ph="insert into ``... " />
+            <marker date="1472716726000" expanded="true" signature="2043:2068" ph="SELECT * FRO... core_film" />
+            <marker date="1472716726000" expanded="true" signature="3108:3164" ph="select count... core_film" />
+            <marker date="1472716726000" expanded="true" signature="3288:3481" ph="INSERT INTO `core_film`... " />
+            <marker date="1472716726000" expanded="true" signature="3890:4010" ph="insert into `core_film_tags`... " />
+            <marker date="1472716726000" expanded="true" signature="4168:4228" ph="update `core... " />
           </folding>
         </state>
       </provider>
@@ -963,30 +958,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial/pipelines.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1050">
-          <caret line="71" column="144" selection-start-line="71" selection-start-column="144" selection-end-line="71" selection-end-column="144" />
-          <folding>
-            <element signature="e#192#206#0" expanded="true" />
-            <marker date="1472617252000" expanded="true" signature="1058:1251" ph="INSERT INTO `core_film`... " />
-            <marker date="1472617252000" expanded="true" signature="1611:1639" ph="insert into ``... " />
-            <marker date="1472617252000" expanded="true" signature="1611:1731" ph="insert into `core_film_tags`... " />
-            <marker date="1472617252000" expanded="true" signature="1611:1773" ph="insert into ``... " />
-            <marker date="1472617252000" expanded="true" signature="2043:2068" ph="SELECT * FRO... core_film" />
-            <marker date="1472617252000" expanded="true" signature="3106:3162" ph="select count... core_film" />
-            <marker date="1472617252000" expanded="true" signature="3286:3479" ph="INSERT INTO `core_film`... " />
-            <marker date="1472617252000" expanded="true" signature="3888:4008" ph="insert into `core_film_tags`... " />
-            <marker date="1472617252000" expanded="true" signature="4166:4226" ph="update `core... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tutorial/oumei.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="960">
           <caret line="64" column="40" selection-start-line="64" selection-start-column="40" selection-end-line="64" selection-end-column="40" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tutorial/pipelines.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="42" column="2" selection-start-line="42" selection-start-column="2" selection-end-line="42" selection-end-column="2" />
+          <folding>
+            <element signature="e#192#206#0" expanded="true" />
+            <marker date="1472716726000" expanded="true" signature="1058:1251" ph="INSERT INTO `core_film`... " />
+            <marker date="1472716726000" expanded="true" signature="1611:1639" ph="insert into ``... " />
+            <marker date="1472716726000" expanded="true" signature="1611:1731" ph="insert into `core_film_tags`... " />
+            <marker date="1472716726000" expanded="true" signature="1611:1773" ph="insert into ``... " />
+            <marker date="1472716726000" expanded="true" signature="2043:2068" ph="SELECT * FRO... core_film" />
+            <marker date="1472716726000" expanded="true" signature="3108:3164" ph="select count... core_film" />
+            <marker date="1472716726000" expanded="true" signature="3288:3481" ph="INSERT INTO `core_film`... " />
+            <marker date="1472716726000" expanded="true" signature="3890:4010" ph="insert into `core_film_tags`... " />
+            <marker date="1472716726000" expanded="true" signature="4168:4228" ph="update `core... " />
+          </folding>
         </state>
       </provider>
     </entry>
