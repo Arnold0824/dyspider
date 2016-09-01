@@ -7,7 +7,7 @@
 
 import scrapy
 
-
+##
 class TutorialItem(scrapy.Item):
     # define the fields for your item here like:
     title = scrapy.Field()#电影名--
