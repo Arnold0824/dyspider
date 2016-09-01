@@ -21,3 +21,4 @@ class TutorialItem(scrapy.Item):
     datetime=scrapy.Field()#电影网站上架时间
     coverlink=scrapy.Field()#封面链接
     country=scrapy.Field()
+    disc=scrapy.Field()

@@ -2,75 +2,80 @@
 import scrapy
 from scrapy.selector import Selector
 from tutorial.items import *
+from datetime import datetime,timedelta
+import re
 
-
-class A33mdSpider(scrapy.Spider):
-    name = "33md1"
-    allowed_domains = ["kanxi123.com"]
-    start_urls = ["http://www.kanxi123.com/sort/movie/"]
+class piaohuaSpider(scrapy.Spider):
+    name = "piaohua"
+    allowed_domains = ["piaohua.com"]
+    start_urls = (
+        "http://www.piaohua.com/html/dongzuo/list_1.html",
+                  )
 
     def parse(self, response):
-        sel = Selector(response)
-        urls = sel.xpath('//div[@class="k_list-index"]/div[@class="k_list-index-1"]/div[@class="k_list-index-1c"]/ul/li[@class="k_list-index-1b-b"]')
-        for url in urls:
-            url = 'http://www.kanxi123.com' + url.xpath('a/@href').extract()[0]
-            yield scrapy.http.Request(url, self.movie_parse)
+        lasttime = '8-17'
+        lasttime = datetime.strptime(lasttime, '%m-%d')
 
-    def movie_parse(self, response):
-        sel = Selector(response)
-        url = sel.xpath('//div[@class="k_pape"]/a/@href').extract()
-        end_url = url[-2].split('/')[3]
-        start_url = url[0][:-2]
-        for i in range(1, int(end_url)+1):
-            if i == 1:
-                parse_url = 'http://www.kanxi123.com' + start_url
-            else:
-                parse_url = 'http://www.kanxi123.com' + start_url + str(i) + "/"
-            yield scrapy.http.Request(parse_url, self.movie_list)
+        # import re
+        pa = re.compile(r'(\d{1,2}-\d{1,2})')
+        for sel in response.css('#list dd'):
+            item = TutorialItem()
+            #item['tags'] = ",".join(sel.css('.k_list-lb-2').xpath('div[4]/a/text()').extract())
+            item['title'] = sel.css('#list dd a b font').xpath('text()').extract()
+            item['link'] = 'http://www.piaohua.com' + sel.css('a').xpath('@href').extract()[0]
+            try:
+                s = sel.css('span').xpath('text()').extract()[0]
+                nowtime = pa.search(s).groups()[0]
+                # print(nowtime)
+                thistime = datetime.strptime(nowtime, '%m-%d')
+            except:
+                #nowtime = str(datetime.now())
+                thistime= lasttime
+            # yield item
 
-    def movie_list(self,response):
-        sel = Selector(response)
-        sites = sel.xpath('//div[@id="k_list-lb-2-a"]')
-        for site in sites:
-            url = 'http://www.kanxi123.com' + site.xpath('a/@href').extract()[0]
-            yield scrapy.http.Request(url, self.movie_detail)
+            if thistime > lasttime:
+                res = scrapy.Request(item['link'], self.parse_film_html)
+                res.meta['item'] = item
+                yield res
+        next_page = response.css('div.page a::attr("href")')
+        if next_page:
+            url = response.urljoin(next_page.extract()[-2])
+            yield scrapy.Request(url, self.parse)
 
-    def movie_detail(self, response):
-        sel = Selector(response)
-        sites = sel.xpath('//div[@class="k_jianjie-3a-7a"]')
-        items = []
-        urls = sel.xpath('//div[@id="k_jianjie-3a"]/div[@class="k_jianjie-3a-2"]/ul/li[@class="k_jianjie-3a-2b"]')
-        for site in sites:
-            # item = TestItem()
-            # item['name'] = sel.xpath('//li[@class="k_jianjie-3a-1-name"]/text()').extract()[0]
-            # item['year'] = sel.xpath('//li[@class="k_jiajie-3a-1-gx"]/a/text()').extract()[0]
-            # item['byname'] = urls.xpath('div[@class="k_jianjie-3a-3"]/ul/li[@class="k_jianjie-3a-3b"]/text()').extract()[0]
-            #
-            # item['director'] = urls.xpath('div[@class="k_jianjie-3a-2"]/ul/li[@class="k_jianjie-3a-2b"]/a/text()').extract()[1]
-            #
-            # item['area'] = urls.xpath('div[@class="k_jianjie-3a-2"]/ul/li[@class="k_jianjie-3a-2b"]/text()').extract()[2]
-            #
-            # item['dialogue']= urls.xpath('div[@class="k_jianjie-3a-2"]/ul/li[@class="k_jianjie-3a-2b"]/text()').extract()[3]
-            # item['subtitle']= urls.xpath('div[@class="k_jianjie-3a-2"]/ul/li[@class="k_jianjie-3a-2b"]/text()').extract()[4]
-            # item['desc'] = urls.xpath('div[@class="k_jianjie-3a-2"]/ul/li[@class="k_jianjie-3a-2b"]/text()').extract()[1]
-            # item['type'] = urls.xpath('div[@class="k_jianjie-3a-3"]/ul/li[@class="k_jianjie-3a-3b"]/text()').extract()[1]
-            #
-            # item['url_title'] = site.xpath['li[@class="k_jianjie-3a-7a-title"]/text()'].extract()[0]
-            # item['url'] = site.xpath['li[@class="k_jianjie-3a-7a-link"]/a/href()'].extract()[0]
-            # item['url_pass'] = site.xpath['li[@class="k_jianjie-3a-7a-pass"]/text()'].extract()[0]
-            # items.append(item)
-            item = TestItem()
-            item['title'] = sel.xpath('//li[@class="k_jianjie-3a-1-name"]/text()').extract()[0]
-            item['year'] = sel.xpath('//li[@class="k_jianjie-3a-1-gx"]/a/text()').extract()[0]
-            item['coverlink'] = sel.xpath('//div[@id="k_jianjie-2b"]/a/img/@src').extract()[0]
-            item['link'] = response.url
-            # item['intro']
-            # item['tags']
-            # item['actors']
-            # item['director']= sel.xpath('//div[@id="k_jianjie-3a"]/div[@class="k_jianjie-3a-2"]/ul/li[@class="k_jianjie-3a-2b"]/a/text()').extract()[0]
-            item['director'] = urls[1].xpath('a/text()').extract()[0]
-            # item['downloadlink']
-            # item['datetime']
-
-            items.append(item)
-        return items
+    def parse_film_html(self, response):
+        pa = re.compile(r'(\d{4}-\d{1,2}-\d{1,2})')
+        item = response.meta['item']
+        a={}
+        s = ''.join(response.css('#showinfo').xpath('div/text()').extract()).replace('\u3000', '').replace('\n', '').replace('\t', '').replace('\r', '').split('◎')
+        for x in s:
+            a[x[:2]] = x[2:]
+        try:
+            try:
+                item['director']=a['导演']
+            except:
+                item['director']='暂无'
+            try:
+                item['intro']=a['简介']
+            except:
+                item['intro']=['内容']
+            item['coverlink']=response.css('#showinfo img').xpath('@src').extract()[0]
+            item['actors']=a['主演']
+            item['year']=a['年代']
+            try:
+                item['datetime']=datetime.strptime(pa.search(a['上映']).groups()[0],'%Y-%m-%d')     #a['上映'][2:] if a['上映']!='' else a['年代']+
+            except:
+                item['datetime']=datetime.now()
+            item['downloadlink']="\n".join(response.css('table a').xpath('@href').extract())+' \n'#+"\n".join(response.css('.k_jianjie-3a-7a-pass').xpath('text()').extract())
+            item['country']=a['国家']
+            item['tags']=a['类别']
+            try:
+                item['disc']="IM"+a['IM']+a['豆瓣']
+            except:
+                pass
+        except:
+            item['intro']='\n'.join(response.css("#showinfo").extract())
+        # try:
+        #     item['intro']+=''
+        # except:
+        #     pass
+        yield item
