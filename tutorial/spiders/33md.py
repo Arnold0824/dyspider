@@ -59,8 +59,8 @@ class A33mdSpider(scrapy.Spider):
             res.meta['item'] = item
             yield res
         next_page = response.css('div.k_pape a')[-1]
-        if next_page.xpath('text()').extract()[0]=='下一页' and self.depth <2:
-            self.depth+=1
+        if next_page.xpath('text()').extract()[0]=='下一页':# and self.depth <2:
+            # self.depth+=1
             url = response.urljoin(next_page.xpath('@href').extract()[0])
             yield scrapy.Request(url, self.parse)
 
@@ -73,6 +73,19 @@ class A33mdSpider(scrapy.Spider):
             item['intro']=response.css('#link-report span').xpath('text()').extract()[-1]
         item['coverlink']=response.css('#k_jianjie-2b a img').xpath('@src').extract()[0]
         item['actors']=','.join(response.css('.k_jianjie-3a-3b a').xpath('text()').extract())
-        item['downloadlink']="\n".join(response.css('.k_jianjie-3a-7a-link a').xpath('@href').extract())+' \n'+"\n".join(response.css('.k_jianjie-3a-7a-pass').xpath('text()').extract())
+        s = ""
+        try:
+            for sel in response.css('.k_jianjie-3a-7a'):
+                if ('http://pan.' in sel.css('.k_jianjie-3a-7a-link a').xpath('text()').extract()[0]):
+                    s += sel.css('.k_jianjie-3a-7a-link a').xpath('@href').extract()[0] + ',' + \
+                         sel.css('.k_jianjie-3a-7a-pass').xpath('text()').extract()[0] + '\n'
+                else:
+                    s += sel.css('.k_jianjie-3a-7a-link a').xpath('@href').extract()[0] + ',' + \
+                         sel.css('.k_jianjie-3a-7a-link a').xpath('text()').extract()[0] + '\n'
+                    # [x.split(',') for x in s.split('\n')]  分离
+            item['downloadlink'] = s
+        except:
+            item['downloadlink'] = " \n"
+        #item['downloadlink']="\n".join(response.css('.k_jianjie-3a-7a-link a').xpath('@href').extract())+' \n'+"\n".join(response.css('.k_jianjie-3a-7a-pass').xpath('text()').extract())
         item['country']=response.css('.k_jianjie-3a-2b').xpath('text()').extract()[0]
         yield item
