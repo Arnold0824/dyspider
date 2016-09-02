@@ -59,8 +59,8 @@ class A33mdSpider(scrapy.Spider):
             res.meta['item'] = item
             yield res
         next_page = response.css('div.k_pape a')[-1]
-        if next_page.xpath('text()').extract()[0]=='下一页':# and self.depth <2:
-            # self.depth+=1
+        if next_page.xpath('text()').extract()[0]=='下一页':#  and self.depth <30:
+            #self.depth+=1
             url = response.urljoin(next_page.xpath('@href').extract()[0])
             yield scrapy.Request(url, self.parse)
 
