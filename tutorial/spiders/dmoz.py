@@ -6,25 +6,15 @@ from datetime import datetime
 import re
 class A33mdSpider(scrapy.Spider):
     name = "kanxitv"
-    depth = 0
+    # depth = 0
     allowed_domains = ["kanxi123.com"]
     start_urls = (
         "http://www.kanxi123.com/sort/11/",
         "http://www.kanxi123.com/sort/8/",
         "http://www.kanxi123.com/sort/9/",
         "http://www.kanxi123.com/sort/10/",
-        # "http://www.kanxi123.com/sort/4/",
-        # "http://www.kanxi123.com/sort/5/",
-        # "http://www.kanxi123.com/sort/6/",
-        # "http://www.kanxi123.com/sort/7/",
-        # "http://www.kanxi123.com/sort/27/",
-        # "http://www.kanxi123.com/sort/28/",
-        # "http://www.kanxi123.com/sort/29/",
-        # "http://www.kanxi123.com/sort/30/",
-        # "http://www.kanxi123.com/sort/31/",
-        # "http://www.kanxi123.com/sort/32/",
-        # "http://www.kanxi123.com/sort/33/",
-        # "http://www.kanxi123.com/sort/34/",
+        "http://www.kanxi123.com/sort/comic/",
+        "http://www.kanxi123.com/sort/variety/",
                   )
 
     def parse(self, response):
@@ -43,9 +33,14 @@ class A33mdSpider(scrapy.Spider):
                 item['year'] = sel.css('.k_list-lb-2').xpath('div[2]/span/text()').extract()[0]
             item['link'] = 'http://www.kanxi123.com' + sel.css('.k_list-lb-2').xpath('div[1]/a[1]/@href').extract()[0]
             try:
-                s = sel.css('.k_list-lb-2').xpath('div[7]/text()').extract()[0]
-                nowtime = pa.search(s).groups()[0]
-                item['datetime'] = datetime.strptime(nowtime, '%Y-%m-%d %H:%M:%S')
+                s = sel.css('#k_list-lb-2-f').xpath('text()').extract()[0]
+                if len(s) > 4:
+                    nowtime = pa.search(s).groups()[0]
+                    # print(nowtime)
+                    item['datetime'] = datetime.strptime(nowtime, '%Y-%m-%d %H:%M:%S')
+                else:
+                    nowtime = str(datetime.now())
+                    item['datetime'] = datetime.strptime(nowtime, '%Y-%m-%d %H:%M:%S')
             except:
                 nowtime = str(datetime.now())
                 item['datetime'] = datetime.strptime(nowtime, '%Y-%m-%d %H:%M:%S')
@@ -53,9 +48,11 @@ class A33mdSpider(scrapy.Spider):
             res.meta['item'] = item
             yield res
         next_page = response.css('div.k_pape a')[-1]
-        if next_page.xpath('text()').extract()[0]=='下一页':# and self.depth <2:
-            self.depth+=1
-            print(self.depth)
+        try:
+            depth=int(next_page.xpath('@href').extract()[0][-2])
+        except:
+            depth=1
+        if next_page.xpath('text()').extract()[0]=='下一页' and depth<20:# and self.depth <50:
             url = response.urljoin(next_page.xpath('@href').extract()[0])
             yield scrapy.Request(url, self.parse)
 

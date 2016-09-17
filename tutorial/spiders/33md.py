@@ -45,10 +45,14 @@ class A33mdSpider(scrapy.Spider):
             # item['coverlink']=sel.css('#k_upnew-1d-img a img').xpath('@src').extract()[0]
             item['link'] = 'http://www.kanxi123.com' + sel.css('.k_list-lb-2').xpath('div[1]/a[1]/@href').extract()[0]
             try:
-                s = sel.css('.k_list-lb-2').xpath('div[7]/text()').extract()[0]
-                nowtime = pa.search(s).groups()[0]
+                s = sel.css('#k_list-lb-2-f').xpath('text()').extract()[0]
+                if len(s)>4:
+                    nowtime = pa.search(s).groups()[0]
                 # print(nowtime)
-                item['datetime'] = datetime.strptime(nowtime, '%Y-%m-%d %H:%M:%S')
+                    item['datetime'] = datetime.strptime(nowtime, '%Y-%m-%d %H:%M:%S')
+                else:
+                    nowtime = str(datetime.now())
+                    item['datetime'] = datetime.strptime(nowtime, '%Y-%m-%d %H:%M:%S')
             except:
                 nowtime = str(datetime.now())
                 item['datetime'] = datetime.strptime(nowtime, '%Y-%m-%d %H:%M:%S')
@@ -59,8 +63,11 @@ class A33mdSpider(scrapy.Spider):
             res.meta['item'] = item
             yield res
         next_page = response.css('div.k_pape a')[-1]
-        if next_page.xpath('text()').extract()[0]=='下一页':#  and self.depth <30:
-            #self.depth+=1
+        try:
+            depth=int(next_page.xpath('@href').extract()[0][-2])
+        except:
+            depth=1
+        if next_page.xpath('text()').extract()[0]=='下一页' and depth<4:# and self.depth <50:
             url = response.urljoin(next_page.xpath('@href').extract()[0])
             yield scrapy.Request(url, self.parse)
 
@@ -81,7 +88,7 @@ class A33mdSpider(scrapy.Spider):
                          sel.css('.k_jianjie-3a-7a-pass').xpath('text()').extract()[0] + '\n'
                 else:
                     s += sel.css('.k_jianjie-3a-7a-link a').xpath('@href').extract()[0] + ',' + \
-                         sel.css('.k_jianjie-3a-7a-link a').xpath('text()').extract()[0] + '\n'
+                         '【dyhell电影网】-'+sel.css('.k_jianjie-3a-7a-link a').xpath('text()').extract()[0] + '\n'
                     # [x.split(',') for x in s.split('\n')]  分离
             item['downloadlink'] = s
         except:
