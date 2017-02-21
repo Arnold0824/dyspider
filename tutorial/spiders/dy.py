@@ -22,9 +22,9 @@ class DySpider(scrapy.Spider):
         for sel in response.css('table td b'):
             item=TutorialItem()
             #item['tags']=sel.xpath('a[1]/text()').extract()[0]
-            title=sel.xpath('a[2]/text()').extract()[0].split('/')[0]
+            title=sel.xpath('a[2]/text()').extract()[0]
             try:
-                item['title'] = re.compile(r'《(.*)》').search(title).groups()[0]
+                item['title'] = re.compile(r'《(.*)》').search(title).groups()[0].split('/')[0]
             except:
                 item['title']= title
             item['link']='http://www.ygdy8.net'+sel.xpath('a[2]/@href').extract()[0]
@@ -45,7 +45,7 @@ class DySpider(scrapy.Spider):
             depth=int(next_page.extract()[-2][-6])-1
         except:
             depth=1
-        if next_page and depth<3:
+        if next_page and depth<2:
             url=response.urljoin(next_page[-2].extract())
             yield scrapy.Request(url,self.parse)
     def parse_film_html(self,response):
@@ -64,6 +64,10 @@ class DySpider(scrapy.Spider):
             item['intro']=re.compile(r'◎简介(.+)').search(all_intro_text).groups()[0]
         except:
             item['intro'] ='暂无介绍'
+        # try:
+        #     item['intro']+=re.compile(r'◎译名(.+?)◎').search(all_intro_text).groups()[0]
+        # except:
+        #     pass
         try:
             item['director']=re.compile(r'◎导演(.+?)◎').search(all_intro_text).groups()[0]
         except:
