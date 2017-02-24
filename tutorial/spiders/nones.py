@@ -2,80 +2,82 @@
 import scrapy
 from scrapy.selector import Selector
 from tutorial.items import *
-from datetime import datetime,timedelta
+from datetime import datetime
 import re
-
-class piaohuaSpider(scrapy.Spider):
-    name = "piaohua"
-    allowed_domains = ["piaohua.com"]
+class btbtdySpider(scrapy.Spider):
+    name = "bt"
+    depth = 0
+    allowed_domains = ["btbtdy.com"]
     start_urls = (
-        "http://www.piaohua.com/html/dongzuo/list_1.html",
+        "http://www.btbtdy.com/screen/1-----time-1.html",
+
                   )
 
     def parse(self, response):
-        lasttime = '8-17'
-        lasttime = datetime.strptime(lasttime, '%m-%d')
 
+        # lasttime = '1900-8-17 4:38:54'
+        # lasttime = datetime.strptime(lasttime, '%Y-%m-%d %H:%M:%S')
         # import re
-        pa = re.compile(r'(\d{1,2}-\d{1,2})')
-        for sel in response.css('#list dd'):
+        pa = re.compile(r'(\d{4}-\d{1,2}-\d{1,2} \d{1,2}:\d{1,2}:\d{1,2})')
+        for sel in response.css('div.list_lis.list_su dl'):
             item = TutorialItem()
-            #item['tags'] = ",".join(sel.css('.k_list-lb-2').xpath('div[4]/a/text()').extract())
-            item['title'] = sel.css('#list dd a b font').xpath('text()').extract()
-            item['link'] = 'http://www.piaohua.com' + sel.css('a').xpath('@href').extract()[0]
             try:
-                s = sel.css('span').xpath('text()').extract()[0]
-                nowtime = pa.search(s).groups()[0]
-                # print(nowtime)
-                thistime = datetime.strptime(nowtime, '%m-%d')
+                item['title'] = sel.css('dt a::attr("title")').extract()[0].replace(' ','')
             except:
-                #nowtime = str(datetime.now())
-                thistime= lasttime
-            # yield item
-
-            if thistime > lasttime:
-                res = scrapy.Request(item['link'], self.parse_film_html)
-                res.meta['item'] = item
-                yield res
-        next_page = response.css('div.page a::attr("href")')
-        if next_page:
-            url = response.urljoin(next_page.extract()[-2])
+                item['title'] = sel.css('dd p.title a').xpath('text()').extract()[0].replace(' ', '')
+            item['coverlink']=sel.css('dt a img::attr("data-src")').extract()[0]
+            item['link'] = 'http://www.btbtdy.com' + sel.css('dt a::attr("href")').extract()[0]
+            try:
+                item['tags'] = sel.css('dd p.des').xpath('text()').extract()[0].split(' ')[-1]
+            except:
+                item['tags'] = '动作'
+            try:
+                item['country'] = sel.css('dd p.des').xpath('text()').extract()[0].split(' ')[1]
+            except:
+                item['country'] = '绝对领域'
+            res = scrapy.Request(item['link'], self.parse_film_html)
+            res.meta['item'] = item
+            yield res
+        next_page = response.css('div.pages a')[-2]
+        try:
+            depth=response.css('div.pages em').xpath('text()').extract()[0]
+        except:
+            depth=1
+        if next_page.xpath('text()').extract()[0]=='下一页' :#and depth<2:# and self.depth <50:
+            url = response.urljoin(next_page.xpath('@href').extract()[0])
             yield scrapy.Request(url, self.parse)
 
     def parse_film_html(self, response):
-        pa = re.compile(r'(\d{4}-\d{1,2}-\d{1,2})')
         item = response.meta['item']
-        a={}
-        s = ''.join(response.css('#showinfo').xpath('div/text()').extract()).replace('\u3000', '').replace('\n', '').replace('\t', '').replace('\r', '').split('◎')
-        for x in s:
-            a[x[:2]] = x[2:]
+        item['director']=response.css('.k_jianjie-3a-2b a').xpath('text()').extract()[-1]
         try:
-            try:
-                item['director']=a['导演']
-            except:
-                item['director']='暂无'
-            try:
-                item['intro']=a['简介']
-            except:
-                item['intro']=['内容']
-            item['coverlink']=response.css('#showinfo img').xpath('@src').extract()[0]
-            item['actors']=a['主演']
-            item['year']=a['年代']
-            try:
-                item['datetime']=datetime.strptime(pa.search(a['上映']).groups()[0],'%Y-%m-%d')     #a['上映'][2:] if a['上映']!='' else a['年代']+
-            except:
-                item['datetime']=datetime.now()
-            item['downloadlink']="\n".join(response.css('table a').xpath('@href').extract())+' \n'#+"\n".join(response.css('.k_jianjie-3a-7a-pass').xpath('text()').extract())
-            item['country']=a['国家']
-            item['tags']=a['类别']
-            try:
-                item['disc']="IM"+a['IM']+a['豆瓣']
-            except:
-                pass
+            item['year'] =  response.css('span.year').xpath('text()').extract()[0].replace('(','').replace(')','')
         except:
-            item['intro']='\n'.join(response.css("#showinfo").extract())
-        # try:
-        #     item['intro']+=''
-        # except:
-        #     pass
+            item['year'] = 'unknown'
+        try:
+            item['actors'] = ",".join(response.css('dd.zhuyan a').xpath('text()').extract())
+        except:
+            item['actors'] ='不清楚'
+
+        try:
+            item['intro']="".join(response.css('div.des div p').xpath('text()').extract())
+            if item['intro']=='':
+                item['intro'] = "".join(response.css('div.des div div').xpath('text()').extract())
+        except:
+            item['intro']="暂无"
+
+        s = ""
+        try:
+            for sel in response.css('.k_jianjie-3a-7a'):
+                if ('http://pan.' in sel.css('.k_jianjie-3a-7a-link a').xpath('text()').extract()[0]):
+                    s += sel.css('.k_jianjie-3a-7a-link a').xpath('@href').extract()[0] + ',' + \
+                         sel.css('.k_jianjie-3a-7a-pass').xpath('text()').extract()[0] + '\n'
+                else:
+                    s += sel.css('.k_jianjie-3a-7a-link a').xpath('@href').extract()[0] + ',' + \
+                         '【dyhell电影网】-'+sel.css('.k_jianjie-3a-7a-link a').xpath('text()').extract()[0] + '\n'
+                    # [x.split(',') for x in s.split('\n')]  分离
+            item['downloadlink'] = s
+        except:
+            item['downloadlink'] = " \n"
+
         yield item
