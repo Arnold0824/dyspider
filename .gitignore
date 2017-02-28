@@ -5,3 +5,5 @@ tutorial/__pycache__/
 *.out
 
 *.pyc
+
+*.json
