@@ -63,7 +63,7 @@ class btbtdySpider(scrapy.Spider):
             nowtime = str(datetime.now())
             item['datetime'] = datetime.strptime(nowtime, '%Y-%m-%d %H:%M:%S')
         try:
-            item['year'] =  response.css('span.year').xpath('text()').extract()[0].replace('(','').replace(')','')
+            item['year'] =  response.css('span.year').xpath('text()').extract()[0].replace('(','').replace(')','').replace(' ','')
         except:
             item['year'] = 'unknown'
         try:
