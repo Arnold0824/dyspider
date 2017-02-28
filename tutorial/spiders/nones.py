@@ -40,7 +40,7 @@ class btbtdySpider(scrapy.Spider):
             yield res
         next_page = response.css('div.pages a')[-2]
         try:
-            depth=response.css('div.pages em').xpath('text()').extract()[0]
+            depth=int(response.css('div.pages em').xpath('text()').extract()[0])
         except:
             depth=1
         if next_page.xpath('text()').extract()[0]=='下一页' and depth<2:# and self.depth <50:
