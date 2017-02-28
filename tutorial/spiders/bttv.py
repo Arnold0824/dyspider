@@ -44,7 +44,7 @@ class btbtdytvSpider(scrapy.Spider):
             depth=response.css('div.pages em').xpath('text()').extract()[0]
         except:
             depth=1
-        if next_page.xpath('text()').extract()[0]=='下一页'  and depth<2:# and self.depth <50:
+        if next_page.xpath('text()').extract()[0]=='下一页'  and depth<5:# and self.depth <50:
             url = response.urljoin(next_page.xpath('@href').extract()[0])
             yield scrapy.Request(url, self.parse)
 
