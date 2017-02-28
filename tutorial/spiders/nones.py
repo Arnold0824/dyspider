@@ -43,13 +43,25 @@ class btbtdySpider(scrapy.Spider):
             depth=response.css('div.pages em').xpath('text()').extract()[0]
         except:
             depth=1
-        if next_page.xpath('text()').extract()[0]=='下一页' :#and depth<2:# and self.depth <50:
+        if next_page.xpath('text()').extract()[0]=='下一页' and depth<2:# and self.depth <50:
             url = response.urljoin(next_page.xpath('@href').extract()[0])
             yield scrapy.Request(url, self.parse)
 
     def parse_film_html(self, response):
         item = response.meta['item']
-        item['director']=response.css('.k_jianjie-3a-2b a').xpath('text()').extract()[-1]
+        item['director']='暂无'
+        try:
+            s = response.css('dd').xpath('text()').extract()[0]
+            if len(s) > 4:
+                # nowtime = pa.search(s).groups()[0]
+                # print(nowtime)
+                item['datetime'] = s
+            else:
+                nowtime = str(datetime.now())
+                item['datetime'] = datetime.strptime(nowtime, '%Y-%m-%d %H:%M:%S')
+        except:
+            nowtime = str(datetime.now())
+            item['datetime'] = datetime.strptime(nowtime, '%Y-%m-%d %H:%M:%S')
         try:
             item['year'] =  response.css('span.year').xpath('text()').extract()[0].replace('(','').replace(')','')
         except:
@@ -68,13 +80,9 @@ class btbtdySpider(scrapy.Spider):
 
         s = ""
         try:
-            for sel in response.css('.k_jianjie-3a-7a'):
-                if ('http://pan.' in sel.css('.k_jianjie-3a-7a-link a').xpath('text()').extract()[0]):
-                    s += sel.css('.k_jianjie-3a-7a-link a').xpath('@href').extract()[0] + ',' + \
-                         sel.css('.k_jianjie-3a-7a-pass').xpath('text()').extract()[0] + '\n'
-                else:
-                    s += sel.css('.k_jianjie-3a-7a-link a').xpath('@href').extract()[0] + ',' + \
-                         '【dyhell电影网】-'+sel.css('.k_jianjie-3a-7a-link a').xpath('text()').extract()[0] + '\n'
+            for sel in response.css('ul.p_list_02 li'):
+                s += sel.css('span a::attr(href)').extract()[0] + ',' + \
+                     '【dyhell电影网】-'+sel.css('a::attr(title)').extract()[0] + '\n'
                     # [x.split(',') for x in s.split('\n')]  分离
             item['downloadlink'] = s
         except:
