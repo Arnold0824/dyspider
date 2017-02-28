@@ -7,7 +7,7 @@ def work():
     os.system('nohup scrapy crawl kanxi >kanxi.out &')
     os.system('nohup scrapy crawl kanxitv >kanxitv.out &')
     os.system('nohup scrapy crawl bt >bt.out &')
-
+    os.system('nohup scrapy crawl bttv >bttv.out &')
 
 def runTask(func,tid, day=0, hour=0, min=0, second=0):
     # Init time
