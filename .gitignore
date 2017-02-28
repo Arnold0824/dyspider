@@ -1,4 +1,7 @@
 
 tutorial/pipelines.py
-
+tutorial/__pycache__/
 .idea/workspace.xml
+*.out
+
+*.pyc
