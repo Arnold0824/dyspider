@@ -28,10 +28,7 @@ class btbtdytvSpider(scrapy.Spider):
                 item['title'] = sel.css('dd p.title a').xpath('text()').extract()[0].replace(' ', '')
             item['coverlink']=sel.css('dt a img::attr("data-src")').extract()[0]
             item['link'] = 'http://www.btbtdy.com' + sel.css('dt a::attr("href")').extract()[0]
-            try:
-                item['tags'] = sel.css('dd p.des').xpath('text()').extract()[0].split(' ')[-1]
-            except:
-                item['tags'] = '动作'
+
             try:
                 item['country'] = sel.css('dd p.des').xpath('text()').extract()[0].split(' ')[1]
             except:
@@ -63,6 +60,10 @@ class btbtdytvSpider(scrapy.Spider):
         except:
             nowtime = str(datetime.now())
             item['datetime'] = datetime.strptime(nowtime, '%Y-%m-%d %H:%M:%S')
+        try:
+            item['tags'] = " ".join(response.css('dd')[2].css('a').xpath('text()').extract())
+        except:
+            item['tags'] = '动作'
         try:
             item['year'] =  response.css('span.year').xpath('text()').extract()[0].replace('(','').replace(')','').replace(' ','')
         except:
