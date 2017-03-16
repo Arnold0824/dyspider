@@ -12,17 +12,17 @@ def work():
 def runTask(func,tid, day=0, hour=0, min=0, second=0):
     # Init time
     now = datetime.now()
-    strnow = now.strftime('%Y-%m-%d %H:%M:%S')
+    strnow = now.strftime('%Y-%m-%d %H:%M')
     print("now:",strnow)
     # First next run time
     period = timedelta(days=day, hours=hour, minutes=min, seconds=second)
     next_time = now + period
-    strnext_time = next_time.strftime('%Y-%m-%d %H:%M:%S')
+    strnext_time = next_time.strftime('%Y-%m-%d %H:%M')
     print("下一次执行:",strnext_time)
     while True:
         # Get system current time
         iter_now = datetime.now()
-        iter_now_time = iter_now.strftime('%Y-%m-%d %H:%M:%S')
+        iter_now_time = iter_now.strftime('%Y-%m-%d %H:%M')
         if str(iter_now_time) == str(strnext_time):
             # Get every start work time
             print("start work: %s" % iter_now_time)
@@ -33,14 +33,14 @@ def runTask(func,tid, day=0, hour=0, min=0, second=0):
             except:
                 pass
             b=datetime.now()
-            print("命令提交完毕")
+            print("job done")
             dura=b-a    
             # Get next iteration time
             iter_time = iter_now + period
-            strnext_time = iter_time.strftime('%Y-%m-%d %H:%M:%S')
-            print("下次抓取: %s" % strnext_time)
+            strnext_time = iter_time.strftime('%Y-%m-%d %H:%M')
+            print("next : %s" % strnext_time)
             # Continue next iteration
             continue
 work()
 
-runTask(work,tid=1,day=0, hour=6, min=0)
+runTask(work,tid=1,day=0, hour=12, min=0)
