@@ -7,3 +7,5 @@ tutorial/__pycache__/
 *.pyc
 
 *.json
+*.iml
+.idea/misc.xml

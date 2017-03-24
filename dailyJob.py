@@ -2,14 +2,19 @@ from datetime import date, time, datetime, timedelta
 import sys
 import os
 
-def work():
-    os.system('nohup scrapy crawl dy >dy.out &')
-    os.system('nohup scrapy crawl kanxi >kanxi.out &')
-    os.system('nohup scrapy crawl kanxitv >kanxitv.out &')
-    os.system('nohup scrapy crawl bt >bt.out &')
-    os.system('nohup scrapy crawl bttv >bttv.out &')
+def work(i):
+    if i==1:
+        os.system('nohup scrapy crawl dy >dy.out &')
+    elif i==2:
+        os.system('nohup scrapy crawl kanxi >kanxi.out &')
+    elif i==3:
+        os.system('nohup scrapy crawl kanxitv >kanxitv.out &')
+    elif i==4:
+        os.system('nohup scrapy crawl bt >bt.out &')
+    elif i==5:
+        os.system('nohup scrapy crawl bttv >bttv.out &')
 
-def runTask(func,tid, day=0, hour=0, min=0, second=0):
+def runTask(day=0, hour=0, min=0, second=0):
     # Init time
     now = datetime.now()
     strnow = now.strftime('%Y-%m-%d %H:%M')
@@ -19,8 +24,11 @@ def runTask(func,tid, day=0, hour=0, min=0, second=0):
     next_time = now + period
     strnext_time = next_time.strftime('%Y-%m-%d %H:%M')
     print("下一次执行:",strnext_time)
+    work(4)
+    x=1
     while True:
         # Get system current time
+
         iter_now = datetime.now()
         iter_now_time = iter_now.strftime('%Y-%m-%d %H:%M')
         if str(iter_now_time) == str(strnext_time):
@@ -29,7 +37,7 @@ def runTask(func,tid, day=0, hour=0, min=0, second=0):
             a=datetime.now()
             try:
             # Call task func
-                func()
+                work(x)
             except:
                 pass
             b=datetime.now()
@@ -39,8 +47,11 @@ def runTask(func,tid, day=0, hour=0, min=0, second=0):
             iter_time = iter_now + period
             strnext_time = iter_time.strftime('%Y-%m-%d %H:%M')
             print("next : %s" % strnext_time)
+            x+=1
+            if x>5:
+                x=1
             # Continue next iteration
             continue
-work()
+#work()
 
-runTask(work,tid=1,day=0, hour=12, min=0)
+runTask(day=0, hour=4, min=0)
