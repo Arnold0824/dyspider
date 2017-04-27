@@ -8,4 +8,5 @@ tutorial/__pycache__/
 
 *.json
 *.iml
+.idea/
 .idea/misc.xml
